@@ -85,10 +85,20 @@ public class ProductBasket {
 
     // Метод проверки корзины
     boolean isBasketEmpty() {
+        boolean checkEmptyBasket = true;
         if (basket == null) {
-            return true;
+            return checkEmptyBasket;
         }
-        return false;
+        for (Product product : basket) {
+            if (product != null) {
+                checkEmptyBasket = false;
+                break;
+            }
+        }
+        if (!checkEmptyBasket) {
+            return checkEmptyBasket;
+        }
+        return checkEmptyBasket;
     }
 
     // Метод вывода сообщения пустой корзины
@@ -99,7 +109,12 @@ public class ProductBasket {
     // Метод очистки корзины
     public void trashBasket() {
         //System.out.println("ProductBasket.trashBasket");
-        basket = null;
+        if (!isBasketEmpty()) {
+            for (int i = 0; i < basket.length; i++) {
+                basket[i] = null;
+            }
+        }
+
     }
 
 }
