@@ -56,15 +56,21 @@ public class ProductBasket {
     public void basketTotalInfo() {
         //System.out.println("ProductBasket.basketTotalInfo");
 
+        int countIsSpecial = 0;
+
         if (isBasketEmpty()) {
             printEmptyBasket();
         } else {
 
             for (Product element : basket) {
-                System.out.println(element.getName() + ": " + element.getAmount());
+                System.out.println(element.toString());
+                if (element.isSpecial()) {
+                    countIsSpecial++;
+                }
             }
 
             System.out.println("Итого: " + basketAmount());
+            System.out.println("Специальных товаров: " + countIsSpecial);
 
         }
     }
